@@ -1,7 +1,5 @@
 package com.bridgelabz.datastructureprograms;
 
-import java.util.Arrays;
-
 import com.bridgelabz.linkedlistfiles.Node;
 import com.bridgelabz.linkedlistfiles.Queue;
 import com.bridgelabz.linkedlistfiles.PrimeNumberAndAnagram;
