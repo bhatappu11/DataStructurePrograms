@@ -6,27 +6,28 @@ import com.bridgelabz.linkedlistfiles.Stack;
 
 public class BalancedParantheses {
 
-	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Enter the expression");
-		String expression = scanner.nextLine();
-		Stack<Character> stack = new Stack();
-		for(int index=0;index<expression.length();index++) {
-			if(expression.charAt(index)=='(') {
-				stack.push(new Node<Character>('('));
-			} else if(expression.charAt(index) == ')') {
-				int result = (int) stack.pop();
-				if(result == -1) {
-					System.out.println("Brackets not balanced");
-				}
+	private static boolean parenthesesChecker(char[] expression) {
+		Stack<Character> stack = new Stack<Character>();
+		for(char ch : expression) {
+			if(ch == '(' ) {
+				stack.push(new Node<Character>(ch));
+			}
+			else if(ch == ')') {
+				if(stack.isEmpty()) return false;
+				stack.pop();
 			}
 		}
-		if(stack.isEmpty()) {
-			System.out.println("Balanced brackets");
-		} else {
-			System.out.println("Brackets not balanced");
-		}
-		scanner.close();
+		return stack.isEmpty();
+	}
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter an Expression");
+		String inputExpression = sc.nextLine();
+		char[] expression = inputExpression.toCharArray();
+		
+		System.out.println("Is the expression balanced? : "+ parenthesesChecker(expression));
+		sc.close();
 	}
 
 }
